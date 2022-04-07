@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <title>Login page || bibin</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap");
+      * {
+        margin: 0%;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        background-image: url("canva-rainbow-gradient-pink-and-purple-zoom-virtual-background-_Tcjok-d9b4.jpg");
+      }
+       /* .cont{
+         filter: blur(12px);
+       } */
+      #eyes,
+      #eyes2 {
+        position: relative;
+        top: 6px;
+        left: -28px;
+        cursor: pointer;
+      }
+      .container {
+        display: flex;
+        width: 279px;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.192);
+        position: absolute;
+        top: 169px;
+        left: 40%;
+        border-radius: 10px;
+      }
+      h1 {
+        text-align: center;
+        padding-bottom: 22px;
+        font-family: "Mochiy Pop p One", sans-serif;
+        /* text-decoration: underline; */
+      }
+      p {
+        padding: 8px 0 5px 0;
+        font-family: "Lato", sans-serif;
+      }
+      input {
+        border-radius: 8px;
+        border: 1px;
+        padding: 6px;
+      }
+
+      button[type="submit"],
+      button[type="reset"] {
+        padding: 8px 15px;
+        margin-top: 8px;
+        border: none;
+        background-color: #fac6dc;
+        cursor: pointer;
+        font-family: "Lato", sans-serif;
+      }
+      button[type="reset"]:hover {
+        background-color: #f9d2e360;
+      }
+      button[type="submit"]:hover {
+        background-color: #c7d5f0ef;
+      }
+      .cpy{
+        position: absolute;
+        bottom: 0px;
+        left:5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="cont">  
+    <span class="container">
+      <form>
+        <h1>Login</h1>
+        <p>Enter your name :</p>
+        <input type="text" placeholder="Enter your name" id="name"  required/>
+        <p>Enter your password :</p>
+        <input type="password" placeholder="Enter the password" id="pass"required />
+        <img
+          src="eyes.png"
+          width="20px"
+          height="20px"
+          alt=""
+          id="eyes"
+          onclick="showpass()"
+        />
+        <p>Confirm the password :</p>
+        <input type="password" placeholder="Confirm the password" id="verify" required />
+        <img
+          src="eyes.png"
+          width="20px"
+          height="20px"
+          alt=""
+          id="eyes2"
+          onclick="showpass()"
+        /><br />
+        <button type="submit" onclick="validate()">submit</button>
+        <button type="reset">Reset</button>
+      </form>
+    </span>
+    </div>
+    <p class="cpy">@ Copyright sold to Bibin thomas 2022 </p>
+  </body>
+  <script>
+    let name = document.getElementById("name");
+    let pass = document.getElementById("pass");
+    let verify = document.getElementById("verify");
+    function validate() {
+      if (name.value == " " || name.value.length == 0) {
+        alert("Enter the name to continue");
+        pass.select();
+        pass.focus();
+        return false;
+      }
+      if (pass.value.length < 4) {
+        alert("The password is too short !!!!");
+        pass.select();
+        pass.focus();
+        return false;
+      }
+
+      if (pass.value == verify.value) {
+        document.write("Login  successfull");
+        console.log("The pass are same ");
+        console.log(pass.value);
+      } else {
+        console.log("THe password dosent match");
+      }
+    }
+
+    function showpass() {
+      pass.type = "text";
+      verify.type = "text";
+      document.getElementById("eyes").src = "open.png";
+      document.getElementById("eyes2").src = "open.png";
+
+      setTimeout(() => {
+        pass.type = "password";
+        verify.type = "password";
+        document.getElementById("eyes").src = "eyes.png";
+        document.getElementById("eyes2").src = "eyes.png";
+      }, 1500);
+    }
+  </script>
+</html>
